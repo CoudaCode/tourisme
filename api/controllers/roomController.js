@@ -10,9 +10,10 @@ class RoomController {
   static async createRoom(req, res, next) {
     try {
       const { _id } = req.admin;
+      console.log("req.admin")
       const {
-        admin,
-        hotel,
+        // admin,
+        // hotel,
         roomType,
         availability,
         beds,
@@ -23,8 +24,8 @@ class RoomController {
         pic,
       } = req.body;
       if (
-        !admin ||
-        !hotel ||
+        // !admin ||
+        // !hotel ||
         !roomType ||
         !availability ||
         !beds ||

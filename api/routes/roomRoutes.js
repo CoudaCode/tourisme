@@ -12,17 +12,18 @@ import RoomController from "../controllers/roomController"
 import protectAdmin from "../middlewares/authAdminMiddleware.js";
 const router = Router();
 
-router.route("/room/create").post(protectAdmin, createRoom);
-router.route("/get-rooms/:id").get(protectAdmin, getRooms);
-router.route("/room/:id").get(protectAdmin, getRoomById).put(protectAdmin, updateRoom);
-router.route("/room/delete/:id").delete(protectAdmin, deleteRoom);
+router.post("/create",protectAdmin, RoomController.createRoom);
+router.get("/get-rooms/:id",protectAdmin, RoomController.getRooms);
+router.get("/:id",protectAdmin, RoomController.getRoomById)
+router.put("/:id",protectAdmin, RoomController.updateRoom);
+router.delete("/delete/:id", protectAdmin, RoomController.deleteRoom);
 
-router.route("/rooms/:id").get(getRooms);
+router.get("/rooms/:id",RoomController.getRooms);
 
-router.route("/reservation/create").post(addReservation);
-router.route("/reservation/get/:id").get(getReservations);
-router.route("/reservation/get/total/:id").get(getTotal);
-router.route("/reservation/update/:id").put(updateReservation);
-router.route("/reservation/delete/:id").delete(deleteReservation);
+router.post("/reservation/create", RoomController.addReservation);
+router.get("/reservation/get/:id",RoomController.getReservations);
+router.get("/reservation/get/total/:id", RoomController.getTotal);
+router.put("/reservation/update/:id", RoomController.updateReservation);
+router.delete("/reservation/delete/:id",RoomController.deleteReservation);
 
-module.exports = router;
+export default router;

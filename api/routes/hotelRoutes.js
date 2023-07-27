@@ -19,7 +19,7 @@ router.get("/all/:id",protectAdmin, hotelController.gethotels);
 //get hotel by id
 router.get("/byId/:id",protectAdmin, hotelController.getHotelById)
 
-router.put("/:id",protectAdmin, hotelController.updateHotel);
+router.put("/update/:id",protectAdmin, hotelController.updateHotel);
 
 router.delete("/:id",protectAdmin, hotelController.deleteHotel);
 

@@ -79,13 +79,13 @@ class hotelController {
       const hotel = await Hotel.findById(req.params.id);
        console.log('hotel', hotel)
       if (hotel) {
-        hotel.hotelName = hotel.hotelName || hotelName;
-        hotel.address =  hotel.address || address;
-        hotel.location = hotel.location || location;
-        hotel.description = hotel.description || description ;
-        hotel.facilities =  hotel.facilities || facilities;
-        hotel.rules = hotel.rules || rules;
-        hotel.pic = hotel.rules || pic;
+        hotel.hotelName = hotelName || hotel.hotelName;
+        hotel.address =  address || hotel.address;
+        hotel.location =location ||  hotel.location;
+        hotel.description = description || hotel.description ;
+        hotel.facilities =  facilities || hotel.facilities;
+        hotel.rules = rules || hotel.rules;
+        hotel.pic = pic || hotel.pic;
         const updatedHotel = await hotel.save();
         res.status(200).json({ message: { ...updatedHotel.toObject() } });
       } else {
